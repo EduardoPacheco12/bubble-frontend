@@ -23,7 +23,7 @@ function Login() {
           <TitleComponent>Bem vindo ao Bubble!</TitleComponent>
         </BlueStrip>
         <Form>
-          <AuthInput id="usuario" text="Email" type="e-mail" load={load} variable={email} setVariable={setEmail} />
+          <AuthInput id="email" text="Email" type="e-mail" load={load} variable={email} setVariable={setEmail} />
           <AuthInput id="senha" text="Senha" type="password" load={load} variable={password} setVariable={setPassword} />
           <AuthButton text="Entrar" load={load} />
         </Form>
