@@ -28,7 +28,7 @@ function Register() {
           <AuthInput id="name" text="Nome" type="text" load={load} variable={name} setVariable={setName} />
           <AuthInput id="email" text="Email" type="e-mail" load={load} variable={email} setVariable={setEmail} />
           <AuthInput id="senha" text="Senha" type="password" load={load} variable={password} setVariable={setPassword} />
-          <AuthInput id="picture" text="Foto de Perfil" type="url" load={load} variable={picture} setVariable={setPicture} />
+          <AuthInput id="picture" text="Foto de Perfil (Url)" type="url" load={load} variable={picture} setVariable={setPicture} />
           <AuthButton text="Cadastrar" load={load} />
         </Form>
         <Click to="/sign-in">
