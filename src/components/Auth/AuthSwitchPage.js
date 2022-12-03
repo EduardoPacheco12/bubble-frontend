@@ -12,7 +12,7 @@ const Text = styled.p`
   font-weight: 500;
   text-align: center;
   color: #3daadc;
-  margin-top: 25px;
+  margin-top: 12px;
   margin-left: 50px;
   margin-right: 50px;
 `;

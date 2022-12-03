@@ -12,7 +12,7 @@ function AuthButton({ load, text }) {
 export default AuthButton;
 
 const Button = styled.button`
-  margin-top: 30px;
+  margin-top: 12px;
   width: 130px;
   height: 35px;
   background-image: linear-gradient(to right, #28a6f0, #196997);

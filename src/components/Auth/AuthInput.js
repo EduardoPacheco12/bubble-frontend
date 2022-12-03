@@ -3,7 +3,7 @@ import styled from "styled-components";
 function AuthInput({ id, text, type, load, variable, setVariable }) {
   return (
     <Container>
-      <Name for={id}>{text}</Name>
+      <Name htmlFor={id}>{text}</Name>
       <Input type={type} id={id} disabled={load ? true : false} onChange={(e) => setVariable(e.target.value)} value={variable} required />
     </Container>
   );

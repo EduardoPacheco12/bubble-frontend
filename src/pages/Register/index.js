@@ -8,6 +8,7 @@ import TitleComponent from "../../components/Auth/TitleComponent";
 import AuthInput from "../../components/Auth/AuthInput";
 import AuthButton from "../../components/Auth/AuthButton";
 import AuthSwitchPage from "../../components/Auth/AuthSwitchPage";
+import AuthSelect from "../../components/Auth/AuthSelect";
 
 function Register() {
   const [load, setLoad] = useState(false);
@@ -15,11 +16,13 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [picture, setPicture] = useState("");
+  const [category, setCategory] = useState("");
+  console.log(category);
 
   return (
     <Container>
       <GlobalStyle />
-      <BubbleComponent color="#2e7fda" top="2vh" left="27vw" />
+      <BubbleComponent color1="#3084e6" color2="#1f59a2" top="2vh" left="27vw" />
       <Content>
         <BlueStrip>
           <TitleComponent>Bem vindo ao Bubble!</TitleComponent>
@@ -28,14 +31,15 @@ function Register() {
           <AuthInput id="name" text="Nome" type="text" load={load} variable={name} setVariable={setName} />
           <AuthInput id="email" text="Email" type="e-mail" load={load} variable={email} setVariable={setEmail} />
           <AuthInput id="senha" text="Senha" type="password" load={load} variable={password} setVariable={setPassword} />
-          <AuthInput id="picture" text="Foto de Perfil (Url)" type="url" load={load} variable={picture} setVariable={setPicture} />
+          <AuthInput id="picture" text="Foto de Perfil (URL)" type="url" load={load} variable={picture} setVariable={setPicture} />
+          <AuthSelect setVariable={setCategory} />
           <AuthButton text="Cadastrar" load={load} />
         </Form>
         <Click to="/sign-in">
           <AuthSwitchPage>Já possui cadastro? Faça o seu login por aqui</AuthSwitchPage>
         </Click>
       </Content>
-      <BubbleComponent color="#e27319" top="70vh" left="58vw" />
+      <BubbleComponent color1="#e37619" color2="#d45b1a" top="70vh" left="58vw" />
     </Container>
   );
 }
