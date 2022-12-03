@@ -47,9 +47,9 @@ const Container = styled.div`
 const Content = styled.div`
   background-color: #ffffff;
   width: 320px;
-  height: 350px;
+  height: 300px;
   border-radius: 10px;
-  margin-top: 20vh;
+  margin-top: 25vh;
 `;
 
 const Form = styled.form`
