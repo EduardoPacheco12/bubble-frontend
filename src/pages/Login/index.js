@@ -17,7 +17,7 @@ function Login() {
   return (
     <Container>
       <GlobalStyle />
-      <BubbleComponent color="#2e7fda" top="13vh" left="27vw" />
+      <BubbleComponent color1="#3084e6" color2="#1f59a2" top="13vh" left="27vw" />
       <Content>
         <BlueStrip>
           <TitleComponent>Bem vindo ao Bubble!</TitleComponent>
@@ -31,7 +31,7 @@ function Login() {
           <AuthSwitchPage>Ainda não possui cadastro? Cadastre-se clicando aqui</AuthSwitchPage>
         </Click>
       </Content>
-      <BubbleComponent color="#e27319" top="65vh" left="58vw" />
+      <BubbleComponent color1="#e37619" color2="#d45b1a" top="65vh" left="58vw" />
     </Container>
   );
 }

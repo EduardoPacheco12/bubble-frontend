@@ -22,7 +22,7 @@ function Register() {
   return (
     <Container>
       <GlobalStyle />
-      <BubbleComponent color="#2e7fda" top="2vh" left="27vw" />
+      <BubbleComponent color1="#3084e6" color2="#1f59a2" top="2vh" left="27vw" />
       <Content>
         <BlueStrip>
           <TitleComponent>Bem vindo ao Bubble!</TitleComponent>
@@ -39,7 +39,7 @@ function Register() {
           <AuthSwitchPage>Já possui cadastro? Faça o seu login por aqui</AuthSwitchPage>
         </Click>
       </Content>
-      <BubbleComponent color="#e27319" top="70vh" left="58vw" />
+      <BubbleComponent color1="#e37619" color2="#d45b1a" top="70vh" left="58vw" />
     </Container>
   );
 }
