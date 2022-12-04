@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import GlobalStyle from "../../assets/GlobalStyle";
 import BubbleComponent from "../../components/General/BubbleComponent";
 import BlueStrip from "../../components/Auth/BlueStrip";
@@ -17,7 +18,55 @@ function Register() {
   const [password, setPassword] = useState("");
   const [picture, setPicture] = useState("");
   const [category, setCategory] = useState("");
-  console.log(category);
+  const navigate = useNavigate();
+
+  const FinishRegister = (e) => {
+    e.preventDefault();
+    setLoad(true);
+    const body = {
+      name,
+      email,
+      password,
+      picture,
+      category,
+    };
+    const url = `${process.env.REACT_APP_API_BASE_URL}/bubble/sign-up`;
+
+    axios
+      .post(url, body)
+      .then(() => {
+        setLoad(false);
+        navigate("/sign-in");
+      })
+      .catch((err) => {
+        const status = err?.response.status;
+        switch (status) {
+          case 409:
+            alert("Este e-mail já existe, tente novamente");
+            setName("");
+            setEmail("");
+            setPassword("");
+            setPicture("");
+            setLoad(false);
+            break;
+          case 422:
+            alert("Por favor preencha os campos corretamente");
+            setLoad(false);
+            break;
+          case 500:
+            alert("Erro de servidor!!!");
+            setName("");
+            setEmail("");
+            setPassword("");
+            setPicture("");
+            setLoad(false);
+            break;
+          default:
+            setLoad(false);
+            break;
+        }
+      });
+  };
 
   return (
     <Container>
@@ -27,7 +76,7 @@ function Register() {
         <BlueStrip>
           <TitleComponent>Bem vindo ao Bubble!</TitleComponent>
         </BlueStrip>
-        <Form>
+        <Form onSubmit={FinishRegister}>
           <AuthInput id="name" text="Nome" type="text" load={load} variable={name} setVariable={setName} />
           <AuthInput id="email" text="Email" type="e-mail" load={load} variable={email} setVariable={setEmail} />
           <AuthInput id="senha" text="Senha" type="password" load={load} variable={password} setVariable={setPassword} />
