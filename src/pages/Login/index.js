@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import GlobalStyle from "../../assets/GlobalStyle";
+import UserContext from "../../contexts/UserContext";
 import BubbleComponent from "../../components/General/BubbleComponent";
 import BlueStrip from "../../components/Auth/BlueStrip";
 import TitleComponent from "../../components/Auth/TitleComponent";
@@ -13,6 +15,53 @@ function Login() {
   const [load, setLoad] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { setUserData } = useContext(UserContext);
+
+  const FinishLogin = (e) => {
+    e.preventDefault();
+    setLoad(true);
+    const body = {
+      email,
+      password,
+    };
+    const url = `${process.env.REACT_APP_API_BASE_URL}/bubble/sign-in`;
+
+    axios
+      .post(url, body)
+      .then((res) => {
+        setUserData(res.data);
+        setLoad(false);
+        navigate("/home");
+      })
+      .catch((err) => {
+        setLoad(false);
+        const status = err?.response.status;
+        switch (status) {
+          case 401:
+            alert("Email ou senha incorreta, tente novamente");
+            setLoad(false);
+            break;
+          case 404:
+            alert("Email ou senha incorreta, tente novamente");
+            setLoad(false);
+            break;
+          case 422:
+            alert("Por favor preencha os campos corretamente");
+            setLoad(false);
+            break;
+          case 500:
+            alert("Erro de servidor!!!");
+            setEmail("");
+            setPassword("");
+            setLoad(false);
+            break;
+          default:
+            setLoad(false);
+            break;
+        }
+      });
+  };
 
   return (
     <Container>
@@ -22,7 +71,7 @@ function Login() {
         <BlueStrip>
           <TitleComponent>Bem vindo ao Bubble!</TitleComponent>
         </BlueStrip>
-        <Form>
+        <Form onSubmit={FinishLogin}>
           <AuthInput id="email" text="Email" type="e-mail" load={load} variable={email} setVariable={setEmail} />
           <AuthInput id="senha" text="Senha" type="password" load={load} variable={password} setVariable={setPassword} />
           <AuthButton text="Entrar" load={load} />
